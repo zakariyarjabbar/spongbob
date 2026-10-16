@@ -44,3 +44,11 @@ Cart, wishlist and up to 30 demo orders persist in versioned local storage under
 This is a complete frontend demo. Account history is local browser state; there is no authentication, backend, live inventory, payment processing, fulfillment, shipping/tracking integration or email delivery. No raw card details are requested and placing an order does not move money or dispatch goods. A public store needs server-authoritative pricing, stock and order storage, secure payment-provider integration and real policies/services.
 
 Product photography and character artwork are replaceable demonstration assets. The project is unaffiliated with Nickelodeon or Paramount. Review `ASSETS.md`, obtain appropriate rights and replace or license imagery before commercial use. `DESIGN.md` and `.impeccable/design.json` record the implemented visual system.
+
+## Social link preview
+
+Sharing uses static Open Graph and Twitter large-image-card metadata in `index.html`, so crawlers do not need JavaScript. The preview is `public/social/sponge-world-preview-v1.jpg`: a 1200 × 630 JPEG, around 178 KB. The editable branded artwork is in `scripts/social-card.html`; while Vite runs, open `/scripts/social-card.html` at 1200 × 630 and export a JPEG at that exact size to regenerate it. It reuses the site's existing typography and artwork.
+
+Share the deployed HTTPS URL, not `localhost`. Social crawlers need unauthenticated public access to both the page and image. `robots.txt` allows crawling. Page fragments (`#/shop`, `#/product/...`) are not sent to the server, so all routes share this website-wide card. Product-specific previews would need real server paths or prerendered pages.
+
+Platforms choose whether and where to show previews. Open Graph and Twitter tags cover common link-card formats, but cannot force every Instagram surface or override Discord/user preview settings. Platforms may cache older cards; use the platform's re-scrape/debug tool when available. For future artwork changes, use a new image filename and update all matching metadata URLs together.

@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1200, initial-scale=1" />
+    <title>Sponge World — Social preview artwork</title>
+    <style>
+      @font-face {
+        font-family: Bangers;
+        src: url("/fonts/bangers.ttf");
+      }
+      @font-face {
+        font-family: Nunito;
+        src: url("/fonts/nunito-sans-extrabold.ttf");
+        font-weight: 800;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        width: 1200px;
+        height: 630px;
+        overflow: hidden;
+      }
+      body {
+        background: #fffefa;
+        color: #171915;
+        font-family: Nunito, sans-serif;
+      }
+      .card {
+        position: relative;
+        isolation: isolate;
+        width: 1200px;
+        height: 630px;
+        overflow: hidden;
+      }
+      .topline {
+        height: 14px;
+        background: #ffe539;
+        position: absolute;
+        inset: 0 0 auto;
+      }
+      .ocean {
+        position: absolute;
+        inset: auto 0 0;
+        height: 210px;
+        background: url("/assets/ocean.jpg") center 68% / cover;
+        mask-image: linear-gradient(transparent, #000 75%);
+        z-index: -1;
+      }
+      .logo {
+        position: absolute;
+        top: 57px;
+        left: 65px;
+        display: flex;
+        flex-direction: column;
+        transform: rotate(-7deg);
+        color: #ffe539;
+        font: 43px/0.8 Bangers;
+        -webkit-text-stroke: 2px #173456;
+        paint-order: stroke fill;
+        text-shadow: 2px 2px #173456;
+        letter-spacing: 1px;
+      }
+      .logo span + span {
+        font-size: 46px;
+        letter-spacing: 1.8px;
+      }
+      .note {
+        position: absolute;
+        top: 80px;
+        left: 240px;
+        font-size: 14px;
+        color: #555c4c;
+      }
+      .note:before {
+        content: "";
+        display: inline-block;
+        width: 22px;
+        height: 2px;
+        background: #23abc6;
+        margin-right: 12px;
+        vertical-align: middle;
+        transform: rotate(-9deg);
+      }
+      h1 {
+        position: absolute;
+        left: 63px;
+        top: 180px;
+        transform: rotate(-3deg);
+        font: 108px/0.98 Bangers;
+        margin: 0;
+        letter-spacing: 1.5px;
+        z-index: 3;
+      }
+      h1 span {
+        white-space: nowrap;
+      }
+      .underline {
+        position: absolute;
+        left: 90px;
+        top: 388px;
+        width: 500px;
+        height: 30px;
+        fill: none;
+        stroke: #ffe539;
+        stroke-width: 10;
+        stroke-linecap: round;
+        z-index: 2;
+      }
+      .tagline {
+        position: absolute;
+        left: 67px;
+        top: 444px;
+        font-size: 22px;
+        margin: 0;
+      }
+      .description {
+        position: absolute;
+        left: 67px;
+        top: 481px;
+        font-size: 17px;
+        margin: 0;
+        color: #414a3e;
+      }
+      .hero-ground {
+        position: absolute;
+        right: 20px;
+        top: 145px;
+        width: 470px;
+        height: 370px;
+        transform: rotate(-15deg);
+        background: #dff6ef;
+        border-radius: 50%;
+        z-index: -1;
+      }
+      .hero {
+        position: absolute;
+        right: 20px;
+        top: 116px;
+        width: 510px;
+        height: 487px;
+        object-fit: contain;
+        transform: rotate(5deg);
+        z-index: 2;
+      }
+      .gary {
+        position: absolute;
+        right: 8px;
+        bottom: 22px;
+        width: 136px;
+        height: 150px;
+        object-fit: contain;
+        transform: rotate(-7deg);
+        z-index: 3;
+      }
+      .doodle {
+        position: absolute;
+        fill: none;
+        stroke-width: 3.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .flower {
+        right: 55px;
+        top: 37px;
+        width: 98px;
+        height: 98px;
+        stroke: #f497bd;
+        transform: rotate(15deg);
+      }
+      .flower-blue {
+        left: 10px;
+        top: 327px;
+        width: 64px;
+        height: 64px;
+        stroke: #25bdd4;
+        transform: rotate(-20deg);
+      }
+      .star {
+        right: 505px;
+        top: 81px;
+        width: 55px;
+        height: 55px;
+        stroke: #171915;
+        transform: rotate(12deg);
+      }
+      .bubble {
+        position: absolute;
+        border: 2px solid #43c6d65e;
+        border-radius: 50%;
+      }
+      .b1 {
+        left: 562px;
+        top: 100px;
+        width: 33px;
+        height: 33px;
+      }
+      .b2 {
+        right: 22px;
+        top: 292px;
+        width: 44px;
+        height: 44px;
+      }
+      .b3 {
+        left: 638px;
+        top: 465px;
+        width: 21px;
+        height: 21px;
+      }
+      .b4 {
+        left: 409px;
+        top: 44px;
+        width: 15px;
+        height: 15px;
+      }
+      .caption {
+        position: absolute;
+        right: 24px;
+        top: 345px;
+        font: 26px/1.05 Bangers;
+        transform: rotate(12deg);
+        z-index: 3;
+      }
+      .demo {
+        position: absolute;
+        bottom: 28px;
+        left: 65px;
+        padding: 8px 14px;
+        border: 1.5px solid #171915;
+        border-radius: 6px;
+        background: #fffefa;
+        font-size: 11px;
+        letter-spacing: 0.3px;
+        transform: rotate(-2deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="topline"></div>
+      <div class="ocean"></div>
+      <div class="logo"><span>SPONGE</span><span>WORLD</span></div>
+      <p class="note">Good vibes from Bikini Bottom.</p>
+      <h1>Cartoons<br /><span>hit different.</span></h1>
+      <svg class="underline" viewBox="0 0 510 32">
+        <path d="M5 15Q265-4 502 10M24 28Q290 7 474 22" />
+      </svg>
+      <p class="tagline">A little Bikini Bottom. A lot of personality.</p>
+      <p class="description">Tees, plushies & everyday treasures.</p>
+      <div class="hero-ground"></div>
+      <img
+        class="hero"
+        src="/assets/hero.png"
+        alt="SpongeBob celebrating"
+      /><img class="gary" src="/assets/characters/gary.png" alt="Gary" /><svg
+        class="doodle flower"
+        viewBox="0 0 100 100"
+      >
+        <path
+          d="M48 39C18 4 11 33 34 47C-8 43 5 76 38 59C12 96 47 108 50 69C68 105 97 85 67 59C111 70 110 34 70 43C91 8 57-7 53 36"
+        />
+        <circle cx="51" cy="51" r="7" /></svg
+      ><svg class="doodle flower-blue" viewBox="0 0 100 100">
+        <path
+          d="M48 39C18 4 11 33 34 47C-8 43 5 76 38 59C12 96 47 108 50 69C68 105 97 85 67 59C111 70 110 34 70 43C91 8 57-7 53 36"
+        />
+        <circle cx="51" cy="51" r="7" /></svg
+      ><svg class="doodle star" viewBox="0 0 70 70">
+        <path d="m35 7 5 21 22-6-15 17 13 18-22-8-13 16 1-24L7 31l23-2Z" /></svg
+      ><i class="bubble b1"></i><i class="bubble b2"></i
+      ><i class="bubble b3"></i><i class="bubble b4"></i>
+      <div class="caption">Just a<br />happy<br />sponge!</div>
+      <span class="demo">Fan-made store demo</span>
+    </div>
+  </body>
+</html>
