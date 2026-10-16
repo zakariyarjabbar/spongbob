@@ -134,10 +134,12 @@ export default function Header() {
             <Link
               className="icon-button cart-header"
               to="/cart"
-              aria-label={`Shopping bag, ${count} items`}
+              aria-label={`Shopping bag, ${count} ${count === 1 ? "item" : "items"}`}
             >
               <ShoppingBag />
-              <span className="cart-count">{count}</span>
+              <span className="cart-count" aria-hidden="true">
+                {count > 99 ? "99+" : count}
+              </span>
             </Link>
           </div>
         </div>
